@@ -1,0 +1,33 @@
+{
+	"name": "sinkdataETL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageETL",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"path": {
+				"type": "string",
+				"defaultValue": "data"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "FinalSINK",
+				"container": {
+					"value": "@dataset().path",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

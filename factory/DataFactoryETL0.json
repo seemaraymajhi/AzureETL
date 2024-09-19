@@ -1,0 +1,9 @@
+{
+	"name": "DataFactoryETL0",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "48e6b26e-83ea-4709-9b6e-d23f28f8027f",
+		"tenantId": "e189780b-5509-45c8-8084-256ad1a37698"
+	}
+}

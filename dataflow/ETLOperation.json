@@ -1,0 +1,60 @@
+{
+	"name": "ETLOperation",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "EmployeeData",
+						"type": "DatasetReference"
+					},
+					"name": "sourceETL"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sinkdataETL",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ITDepartment",
+					"description": "filter added on IT Department"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EEID as string,",
+				"          {Full Name} as string,",
+				"          {Job Title} as string,",
+				"          Department as string,",
+				"          {Business Unit} as string,",
+				"          Gender as string,",
+				"          Ethnicity as string,",
+				"          Age as string,",
+				"          {Hire Date} as string,",
+				"          {Annual Salary} as string,",
+				"          {Bonus %} as string,",
+				"          Country as string,",
+				"          City as string,",
+				"          {Exit Date} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourceETL",
+				"sourceETL filter(equals('IT', Department)) ~> ITDepartment",
+				"ITDepartment sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['FinalETL'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

@@ -1,0 +1,79 @@
+{
+	"name": "EmployeeData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageETL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Employee Sample Data",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Employee Sample Data.xlsx",
+				"container": "source"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "EEID",
+				"type": "String"
+			},
+			{
+				"name": "Full Name",
+				"type": "String"
+			},
+			{
+				"name": "Job Title",
+				"type": "String"
+			},
+			{
+				"name": "Department",
+				"type": "String"
+			},
+			{
+				"name": "Business Unit",
+				"type": "String"
+			},
+			{
+				"name": "Gender",
+				"type": "String"
+			},
+			{
+				"name": "Ethnicity",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "Hire Date",
+				"type": "String"
+			},
+			{
+				"name": "Annual Salary",
+				"type": "String"
+			},
+			{
+				"name": "Bonus %",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "Exit Date",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
